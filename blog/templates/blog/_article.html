@@ -1,0 +1,24 @@
+{% load blog_tags %}
+
+{% if articles %}
+    <h2><a href="{% url 'blog.article_detail' article.slug %}">{{ article.title }}</a></h2>
+{% else %}
+    <h2>{{ article.title }}</h2>
+{% endif %}
+
+<div class="article-info">
+    <small>
+        <strong>Por: </strong>{{ article.owner.username }}
+        <strong>Hace: </strong>{{ article.create_at|timesince }}
+        <strong>El: </strong>{{ article.create_at|date:'d F Y' }}
+    </small><hr>
+</div>
+{% if articles %}
+    <p>{{ article|read_more|safe }}</p>
+{% else %}
+    <p>{{ article.body|safe }}</p>
+{% endif %}
+
+<div class="article-footer">
+    <strong>Etiquetas: </strong>{{ article.get_string_tags }}
+</div>
