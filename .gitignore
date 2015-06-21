@@ -15,6 +15,7 @@ logs/
 # Specific files #
 ##################
 *.komodoproject
+db.sqlite3
 
 # OS generated files #
 ######################
